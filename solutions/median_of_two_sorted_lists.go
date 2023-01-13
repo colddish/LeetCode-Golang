@@ -1,5 +1,22 @@
 package solutions
 
+/*
+Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+
+The overall run time complexity should be O(log (m+n)).
+*/
+
+func FindMedianSortedArrays(nums1 []int, nums2 []int) float64 {
+	target := (len(nums1) + len(nums2)) / 2
+	if (len(nums1)+len(nums2))%2 != 0 {
+		return float64(findMedian(target, nums1, nums2))
+	} else {
+		median1 := findMedian(target, nums1, nums2)
+		median2 := findMedian(target-1, nums1, nums2)
+		return float64(median1+median2) / 2.0
+	}
+}
+
 func min(a, b int) int {
 	if a < b {
 		return a
@@ -86,16 +103,5 @@ func findMedian(target int, nums1, nums2 []int) int {
 				return findMedian(target-mid2, nums1, nums2[mid2:])
 			}
 		}
-	}
-}
-
-func FindMedianSortedArrays(nums1 []int, nums2 []int) float64 {
-	target := (len(nums1) + len(nums2)) / 2
-	if (len(nums1)+len(nums2))%2 != 0 {
-		return float64(findMedian(target, nums1, nums2))
-	} else {
-		median1 := findMedian(target, nums1, nums2)
-		median2 := findMedian(target-1, nums1, nums2)
-		return float64(median1+median2) / 2.0
 	}
 }
