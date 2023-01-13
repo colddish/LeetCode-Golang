@@ -1,4 +1,4 @@
-package solutions
+package medianoftwosortedlists
 
 /*
 https://leetcode.com/problems/median-of-two-sorted-arrays/description/
